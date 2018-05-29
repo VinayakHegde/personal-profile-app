@@ -252,11 +252,12 @@ body {
   width: 200px;
   display: block;
 }
-.profile-contact-details {
+#profilecontentbottom {
   text-align: center;
   height: calc(100% - 100px);
   line-height: 2;
   padding: 10px;
+  overflow-x: auto;
 }
 #contactpersonal {
   font-size: 40px;
@@ -271,7 +272,7 @@ body {
   display: inline-block;
   padding: 0 10px;
 }
-.contact-social {
+#contactsocial a.fa {
   padding: 20px;
   font-size: 40px;
   width: 80px;
@@ -280,14 +281,14 @@ body {
   text-align: center;
   text-decoration: none;
 }
-.contact-social:hover,
-.contact-social:focus:hover {
+#contactsocial a.fa:hover,
+#contactsocial a.fa:focus:hover {
   background: dodgerblue;
   color: #f7f3ea;
   text-decoration: none;
 }
-.contact-social,
-.contact-social:focus {
+#contactsocial a.fa,
+#contactsocial a.fa:focus {
   color: dodgerblue;
   outline: none;
   text-decoration: none;
@@ -356,7 +357,7 @@ body {
   #profilecontenttop {
     border-bottom-left-radius: 40px;
   }
-  .profile-contact-details {
+  #profilecontentbottom {
     height: calc(100% - 75px);
   }
   #contactpersonal {
@@ -365,7 +366,7 @@ body {
   #contactsocial > div {
     padding: 0 7px;
   }
-  .contact-social {
+  #contactsocial a.fa {
     font-size: 25px;
     width: 60px;
     height: 60px;

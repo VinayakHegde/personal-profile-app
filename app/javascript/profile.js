@@ -16,6 +16,41 @@ const MENU_ABOUT = 'About';
 const MENU_WORK = 'Work';
 const MENU_SKILLS = 'Skills';
 const MENU_CONTACT = 'Contact';
+const PROFILE_CONTENTS = 'profile-content';
+const ELEMENT_DIV = 'div';
+const ELEMENT_HEADER = 'header';
+const ELEMENT_BODY = 'body';
+const ELEMENT_SPAN = 'span';
+const ELEMENT_ANCHOR = 'a';
+const ELEMENT_ICON = 'i';
+const ELEMENT_IMAGE = 'img';
+const ELEMENT_UL = 'ul';
+const ELEMENT_LI = 'li';
+const ELEMENT_STRONG = 'strong';
+const CLASS_NAME_ABOUT = 'profile-about-details';
+const CLASS_NAME_WORK = 'profile-work-details';
+const CLASS_NAME_SKILLS = 'profile-skills-details';
+const CLASS_NAME_CONTACT = 'profile-contact-details';
+const CLASS_NAME_CONTACT_PERSONAL ='personal-contact-details';
+const ID_CONTACT_PERSONAL = 'contactpersonal';
+const ID_CONTACT_PHONE_ELEMENT = 'contactphoneelement';
+const ID_CONTACT_PHONE_NUMBER = 'contactphonenumber';
+const ID_CONTACT_PHONE_ICON = 'contactphoneicon';
+const ID_CONTACT_EMAIL_ELEMENT = 'contactemailelement';
+const ID_CONTACT_EMAIL_ADDRESS = 'contactemailaddress';
+const ID_CONTACT_EMAIL_ICON = 'contactemailicon';
+const ID_CONTACT_SOCIAL = 'contactsocial';
+const QUERY_SELECTOR_CLASS_EXPERIENCE = '.experience';
+const QUERY_SELECTOR_ID_PROFILE_CONTENT = '#profilecontentbottom';
+const ID_PROFILE_CONTENT_CONTAINER = 'profilecontentcontainer';
+const ID_PROFILE_CONTENT_TOP = 'profilecontenttop';
+const ID_PROFILE_CONTENT_BOTTOM = 'profilecontentbottom';
+
+const FA_ICON_PHONE = 'fa fa-mobile';
+const FA_ICON_EMAIL = 'fa fa-envelope-o';
+
+const ID_CONTACT_SOCIAL_FOR = 'socialanchorfor';
+const ANCHOR_TARGET = '_blank';
 
 class Profile {
     constructor () {
@@ -31,14 +66,14 @@ class Profile {
 		 });
     }
     render() {
-    	let profileEl = createNewElement('div', PROFILE_ELEMENT),
-    		leftEl = createNewElement('header', LEFT_ELEMENT),
-    		rightEl = createNewElement('div', RIGHT_ELEMENT);
-    	leftEl.className = 'profile-content';
-		rightEl.className = 'profile-content';
+    	let profileEl = createNewElement(ELEMENT_DIV, PROFILE_ELEMENT),
+    		leftEl = createNewElement(ELEMENT_HEADER, LEFT_ELEMENT),
+    		rightEl = createNewElement(ELEMENT_DIV, RIGHT_ELEMENT);
+    	leftEl.className = PROFILE_CONTENTS;
+		rightEl.className = PROFILE_CONTENTS;
     	profileEl.appendChild(leftEl);
     	profileEl.appendChild(rightEl);
-        document.getElementById('body').appendChild(profileEl);
+        document.getElementById(ELEMENT_BODY).appendChild(profileEl);
 
         rightEl.appendChild(createContentSystem(this.data));
         leftEl.appendChild(createMenuSystem(this.data, this.loadContent.bind(this)));
@@ -65,39 +100,39 @@ class Profile {
     loadAbout(){
     	let aboutEl = clearContents();
     	aboutEl.innerHTML = this.data.About;
-    	document.querySelector('.experience').innerText = this.data.Experience;
-		aboutEl.className = "profile-about-details";
+    	document.querySelector(QUERY_SELECTOR_CLASS_EXPERIENCE).innerText = this.data.Experience;
+		aboutEl.className = CLASS_NAME_ABOUT;
     }
     loadWork(){
     	let workEl = clearContents();
     	workEl.innerText = "Under Construction..!!";
-		workEl.className = "profile-work-details";
+		workEl.className = CLASS_NAME_WORK;
     }
     loadSkills(){
     	let skillsEl = clearContents();
     	skillsEl.innerText = "Under Construction..!!";
-		skillsEl.className = "profile-skills-details";
+		skillsEl.className = CLASS_NAME_SKILLS;
     }
     loadContact(){
     	let contactEl = clearContents(),
-    		personal = createNewElement('div', 'contactpersonal'),
-    		phoneEl = createNewElement('div', 'contactphoneelement'),
-    		phone = createNewElement('span', 'contactphonenumber'),
-    		phoneIcon = createNewElement('i', 'contactphoneicon'),
-    		emailEl = createNewElement('div', 'contactemailelement'),
-    		email = createNewElement('span', 'contactemailaddress'),
-    		emailIcon = createNewElement('i', 'contactphoneicon'),
-    		social = createNewElement('div', 'contactsocial');
+    		personal = createNewElement(ELEMENT_DIV, ID_CONTACT_PERSONAL),
+    		phoneEl = createNewElement(ELEMENT_DIV, ID_CONTACT_PHONE_ELEMENT),
+    		phone = createNewElement(ELEMENT_SPAN, ID_CONTACT_PHONE_NUMBER),
+    		phoneIcon = createNewElement(ELEMENT_ICON, ID_CONTACT_PHONE_ICON),
+    		emailEl = createNewElement(ELEMENT_DIV, ID_CONTACT_EMAIL_ELEMENT),
+    		email = createNewElement(ELEMENT_SPAN, ID_CONTACT_EMAIL_ADDRESS),
+    		emailIcon = createNewElement(ELEMENT_ICON, ID_CONTACT_EMAIL_ICON),
+    		social = createNewElement(ELEMENT_DIV, ID_CONTACT_SOCIAL);
 		
-		phoneIcon.className = "fa fa-mobile";
+		phoneIcon.className = FA_ICON_PHONE;
     	phone.innerText = this.data.Contact.Phone.Mobile;
-		phone.className = "personal-contact-details";
+		phone.className = CLASS_NAME_CONTACT_PERSONAL;
 		phoneEl.appendChild(phoneIcon);
 		phoneEl.appendChild(phone);
 
-		emailIcon.className = "fa fa-envelope-o";		
+		emailIcon.className = FA_ICON_EMAIL;		
 		email.innerText = this.data.Contact.Email;
-		email.className = "personal-contact-details";
+		email.className = CLASS_NAME_CONTACT_PERSONAL;
 		emailEl.appendChild(emailIcon);
 		emailEl.appendChild(email);
 
@@ -107,11 +142,11 @@ class Profile {
 
 		if(this.data.Contact.Social && this.data.Contact.Social.length > 0){
 			this.data.Contact.Social.forEach((sObj)=>{
-				let socialDiv = createNewElement('div', 'contactsocial'+sObj.Name),
-					socialEl = createNewElement('a', 'socialanchorfor'+sObj.Name);
-				socialEl.className = 'contact-social ' + sObj.Class;
+				let socialDiv = createNewElement(ELEMENT_DIV, ID_CONTACT_SOCIAL+sObj.Name),
+					socialEl = createNewElement(ELEMENT_ANCHOR, ID_CONTACT_SOCIAL_FOR+sObj.Name);
+				socialEl.className = sObj.Class;
 				socialEl.href = sObj.Link;
-				socialEl.target="_blank";
+				socialEl.target=ANCHOR_TARGET;
 				socialEl.title=sObj.Name;
 
 				socialDiv.appendChild(socialEl);
@@ -123,12 +158,12 @@ class Profile {
 		contactEl.appendChild(personal);
 		contactEl.appendChild(social);
 
-		contactEl.className = "profile-contact-details";
+		contactEl.className = CLASS_NAME_CONTACT;
     }
 }
 
 function clearContents(){
-	var el = document.getElementById('profilecontentbottom');
+	var el = document.querySelector(QUERY_SELECTOR_ID_PROFILE_CONTENT);
 	while (el.firstChild) {
 	    el.removeChild(el.firstChild);
 	}
@@ -138,9 +173,9 @@ function clearContents(){
 }
 
 function createContentSystem(data, callback){
-	let containerEl = createNewElement('div', 'profilecontentcontainer'),
-		divTopEl = createNewElement('div', 'profilecontenttop'),
-		divBottomEl = createNewElement('div', 'profilecontentbottom');
+	let containerEl = createNewElement(ELEMENT_DIV, ID_PROFILE_CONTENT_CONTAINER),
+		divTopEl = createNewElement(ELEMENT_DIV, ID_PROFILE_CONTENT_TOP),
+		divBottomEl = createNewElement(ELEMENT_DIV, ID_PROFILE_CONTENT_BOTTOM);
 
 	divTopEl.appendChild(createProfilePic());
 	divTopEl.appendChild(createTitle());
@@ -152,12 +187,12 @@ function createContentSystem(data, callback){
 
 function createMenuSystem(data, callback){
 	let items = data.Menu,
-		containerEl = createNewElement('div', 'profilemenucontainer'),
-		ulEl = createNewElement('ul', 'profilemenu');
+		containerEl = createNewElement(ELEMENT_DIV, 'profilemenucontainer'),
+		ulEl = createNewElement(ELEMENT_UL, 'profilemenu');
 
 	if(items.length > 0){
 		items.forEach((item) => {
-			let liEl = createNewElement('li', 'profilemenu'+item);
+			let liEl = createNewElement(ELEMENT_LI, 'profilemenu'+item);
 			liEl.innerText = item;
 			liEl.setAttribute('data', 'menu-name:' + item);
 
@@ -182,10 +217,10 @@ function createMenuSystem(data, callback){
 }
 
 function createNameLogo(){
-	let logoDesktop = createNewElement('img', 'profilelogonamev'),
-		logoMobile = createNewElement('img', 'profilelogonameh'),
-		logoWrapper = createNewElement('strong', 'profilelogowrapper'),
-		logoAnchor = createNewElement('a', 'profilelogoanchor');
+	let logoDesktop = createNewElement(ELEMENT_IMAGE, 'profilelogonamev'),
+		logoMobile = createNewElement(ELEMENT_IMAGE, 'profilelogonameh'),
+		logoWrapper = createNewElement(ELEMENT_STRONG, 'profilelogowrapper'),
+		logoAnchor = createNewElement(ELEMENT_ANCHOR, 'profilelogoanchor');
 
 	logoDesktop.className = 'profile-logo-name-v';
 	logoDesktop.alt = 'Name Logo';
@@ -204,7 +239,7 @@ function createNameLogo(){
 }
 
 function createProfilePic(){
-	let profilePic = createNewElement('img', 'profilepic');
+	let profilePic = createNewElement(ELEMENT_IMAGE, 'profilepic');
 
 	profilePic.className = 'img-circle';
 	profilePic.width = 100;
@@ -216,12 +251,12 @@ function createProfilePic(){
 }
 
 function createTitle(){
-	let stage = createNewElement('div', 'currentjobtitle');
+	let stage = createNewElement(ELEMENT_DIV, 'currentjobtitle');
 
 	stage.className = 'stage';
 	for(let l=1; l<=20 ; l++ ){
 
-		let layer = createNewElement('div', 'layer_'+l);
+		let layer = createNewElement(ELEMENT_DIV, 'layer_'+l);
 		layer.className = 'layer';
 
 		stage.appendChild(layer);
