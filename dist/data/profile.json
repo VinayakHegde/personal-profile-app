@@ -1,0 +1,28 @@
+{
+	"FirstName":"Vinayak",
+	"LastName":"Hegde",
+	"Address":{
+		"City":"Stockport",
+		"PostCode":"SK4 1ST"
+	},
+	"About":"<p><strong>Innovative Front End Developer<\/strong> offering <u class=\"experience\">years<\/u> of experience in the full software development life cycle - from concept through delivery of next-generation applications and customisable solutions.<br\/><strong>Expert in advanced development methodologies<\/strong>, tools and processes contributing to the design and rollout of cutting-edge web applications.<br\/><strong>Known for excellent troubleshooting skills<\/strong> - able to analyse code and engineer well-researched, cost-effective and responsive solutions.<\/p>",
+	"Experience": "7+ years",
+	"Contact":{
+		"Email":"vinayak.nandi@gmail.com",
+		"Phone":{
+			"LandLine":null,
+			"Work": null,
+			"Mobile":"(+44) 0750 820 7800"
+		},
+		"Social" : [
+			{"Name" : "Linkedin", "Class" : "fa fa-linkedin", "Link":"https://www.linkedin.com/in/vinayaknandi/"},
+			{"Name" : "Github", "Class" : "fa fa-github", "Link" : "https://github.com/VinayakHegde"},
+			{"Name" : "Stackoverflow", "Class" : "fa fa-stack-overflow", "Link" : "https://stackoverflow.com/users/1519946/vinnie"},
+			{"Name" : "Facebook", "Class" : "fa fa-facebook", "Link" : "https://www.facebook.com/vinayak.nandi"},
+			{"Name" : "Twitter", "Class" : "fa fa-twitter", "Link" : "https://twitter.com/vinayak_nandi"}
+		]
+	},
+	"Menu" : ["About", "Work", "Skills", "Contact"],
+	"Work" : "YET TO ADD!!",
+	"Skills" : "YET TO ADD!!"
+}
