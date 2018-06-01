@@ -46,8 +46,8 @@ const ID_PROFILE_CONTENT_CONTAINER = 'profilecontentcontainer';
 const ID_PROFILE_CONTENT_TOP = 'profilecontenttop';
 const ID_PROFILE_CONTENT_BOTTOM = 'profilecontentbottom';
 
-const FA_ICON_PHONE = 'fa fa-mobile';
-const FA_ICON_EMAIL = 'fa fa-envelope-o';
+const FA_ICON_PHONE = 'icon fas fa-mobile-alt';
+const FA_ICON_EMAIL = 'icon far fa-envelope';
 
 const ID_CONTACT_SOCIAL_FOR = 'socialanchorfor';
 const ANCHOR_TARGET = '_blank';
@@ -110,7 +110,30 @@ class Profile {
     }
     loadSkills(){
     	let skillsEl = clearContents();
-    	skillsEl.innerText = "Under Construction..!!";
+    		
+    	if(this.data.Skills.length > 0){
+    		this.data.Skills.forEach((skill)=>{
+    			let skillEl = createNewElement(ELEMENT_DIV, skill.Name.toLowerCase().replace(' ', '').replace('#', '').replace('.', '')),
+    				skillIcon = createNewElement(ELEMENT_SPAN, 'skillicon'),
+    				skillName = createNewElement(ELEMENT_SPAN, 'skillname'),
+    				skillLevel = createNewElement(ELEMENT_SPAN, 'skilllevel');
+
+    			skillEl.className = 'personal-skill';
+    			skillIcon.className = skill.Class;
+    			skillName.className = 'personal-skill-name';
+    			skillName.innerText = skill.Name;
+    			skillLevel.className = 'personal-skill-level';
+
+    			skillEl.appendChild(skillIcon);
+    			skillEl.appendChild(skillName);
+    			// skillEl.appendChild(skillLevel);
+
+    			skillsEl.appendChild(skillEl);
+
+    		});
+    	}
+
+
 		skillsEl.className = CLASS_NAME_SKILLS;
     }
     loadContact(){

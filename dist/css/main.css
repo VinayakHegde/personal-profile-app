@@ -1,4 +1,4 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+@import url(https://use.fontawesome.com/releases/v5.0.13/css/all.css);
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -161,7 +161,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #f7f3ea;
+  background: #fff;
   min-width: 320px;
   -webkit-font-smoothing: antialiased;
   font-weight: 300;
@@ -203,7 +203,7 @@ body {
 }
 #profilecontenttop {
   border-bottom: 1px solid;
-  border-bottom-left-radius: 51px;
+  border-bottom-left-radius: 50px;
 }
 #profilemenucontainer {
   -webkit-box-align: center;
@@ -272,7 +272,7 @@ body {
   display: inline-block;
   padding: 0 10px;
 }
-#contactsocial a.fa {
+.icon {
   padding: 20px;
   font-size: 40px;
   width: 80px;
@@ -281,17 +281,28 @@ body {
   text-align: center;
   text-decoration: none;
 }
-#contactsocial a.fa:hover,
-#contactsocial a.fa:focus:hover {
+.icon:hover,
+.icon:focus:hover {
   background: dodgerblue;
   color: #f7f3ea;
   text-decoration: none;
 }
-#contactsocial a.fa,
-#contactsocial a.fa:focus {
+.icon,
+.icon:focus {
   color: dodgerblue;
   outline: none;
   text-decoration: none;
+}
+.personal-skill {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  border-bottom: 1px solid;
+  text-align: left !important;
+}
+.personal-skill > span {
+  display: inline-block;
 }
 @media (min-width: 62em) {
   #profileEl {
@@ -366,10 +377,25 @@ body {
   #contactsocial > div {
     padding: 0 7px;
   }
-  #contactsocial a.fa {
+  .icon {
     font-size: 25px;
     width: 60px;
     height: 60px;
+  }
+}
+@media (min-width: 65.875em) {
+  .personal-skill {
+    width: 25%;
+  }
+}
+@media (max-width: 65.874em) {
+  .personal-skill {
+    width: 33%;
+  }
+}
+@media (max-width: 41.875em) {
+  .personal-skill {
+    width: 50%;
   }
 }
 @media (max-width: 25em) {
