@@ -1,0 +1,31 @@
+
+.personal-contacts{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;   
+    margin: 15px;
+}
+
+.contact-details{
+    padding-left: 20px;
+}
+
+.phone-wrapper, 
+.email-wrapper{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+
+.actions-icon-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    font-size: 6em;
+    width: 100%;
+}
+.actions-icon {
+    flex: 1;
+    display:initial;
+    text-align: center;
+}
